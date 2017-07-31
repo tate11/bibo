@@ -228,7 +228,7 @@
                             <tr>
                                 <td class="tg-yw4lall" colspan="6">
                                     <span t-field="o.partner_id.name"/> <span style="padding-left:15px;margin-left:15px;" t-field="o.partner_id.ref"/><br/>
-                                    R.F.C.: <span t-field="o.partner_id.vat"/> <br/>
+                                    R.F.C.: <span t-field="o.partner_id.vat_split"/> <br/>
                                     <span t-field="o.partner_id.street"/>, <br/>
                                     <span t-field="o.partner_id.city"/>, <span t-field="o.partner_id.state_id"/>, <span t-field="o.partner_id.zip"/> <br/>
                                     <span t-field="o.partner_id.country_id"/><br/>
@@ -243,9 +243,9 @@
                                 <td class="tg-hgcjnoright">Pedido</td>
                                 <td class="tg-hgcjtopbot">Cantidad</td>
                                 <!--<td class="tg-hgcjtopbot">Codigo</td>-->
-                                <td class="tg-e3zvtopbot" colspan="3">Descripción</td>
-                                <td class="tg-hgcjtopbot" colspan="2">Unidad</td>
-                                <td class="tg-34fqtopbot" colspan="2">Precio unitario</td>
+                                <td class="tg-e3zvtopbot" colspan="6">Descripción</td>
+                                <td class="tg-hgcjtopbot" colspan="1">Unidad</td>
+                                <td class="tg-34fqtopbot" colspan="1">Precio unitario</td>
                                 <td class="tg-34fqnoleft" colspan="2">Importe</td>
                             </tr>
                             <tr t-foreach="o.invoice_line_ids.sorted(key=lambda b: b.product_id.default_code)" t-as="l">
@@ -256,13 +256,13 @@
                                 <!--<td class="tg-s6z2">
                                     <span t-field="l.product_id.default_code"/>
                                 </td>-->
-                                <td class="tg-031e" colspan="3">
+                                <td class="tg-031e" colspan="6">
                                     <span t-field="l.name"/>
                                 </td>
-                                <td class="tg-s6z2" colspan="2">
+                                <td class="tg-s6z2" colspan="1">
                                     <span t-field="l.uom_id" groups="product.group_uom"/>
                                 </td>
-                                <td class="tg-0ord" colspan="2">
+                                <td class="tg-0ord" colspan="1">
                                     <span t-field="l.price_unit" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;o.currency_id&quot;}"/>
                                 </td>
                                 <td class="tg-0ord" colspan="2">
