@@ -35,108 +35,7 @@
 
     <template id="report_header_report_invoice">
         <div class="header">
-            <style type="text/css">
-                .tg-header  {border-collapse:collapse;border-spacing:0;}
-                .tg-header td{font-family:Arial, sans-serif;font-size:14px;padding:5px 5px;overflow:hidden;word-break:normal;}
-                .tg-header th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:5px 5px;overflow:hidden;word-break:normal;}
-                .tg-header .tg-header-0ord{text-align:right}
-                .tg-header .tg-header-s6z2{text-align:center}
-                .tg-header .tg-header-s6z2all{text-align:center;border-style:solid;border-width:1px;}
-                .tg-header .tg-header-baqh{text-align:center;vertical-align:top}
-                .tg-header .tg-header-e3zv{font-weight:bold}
-                .tg-header .tg-header-e3zvcero{font-weight:bold;border-style:solid;border-width:0px;}
-                .tg-header .tg-header-e3zvall{font-weight:bold;border-style:solid;border-width:1px;}
-                .tg-header .tg-header-e3zvtopbot{font-weight:bold;border-style:solid;border-width:1px;border-style:solid;border-width:1px;border-right:0px;border-left:0px}
-                .tg-header .tg-header-yw4l{vertical-align:top}
-                .tg-header .tg-header-yw4lall{vertical-align:top;border-style:solid;border-width:1px;}
-                .tg-header .tg-header-hgcj{font-weight:bold;text-align:center}
-                .tg-header .tg-header-hgcjall{font-weight:bold;text-align:center;border-style:solid;border-width:1px;}
-                .tg-header .tg-header-hgcjnoright{font-weight:bold;text-align:center;border-style:solid;border-width:1px;border-right:0px}
-                .tg-header .tg-header-hgcjtopbot{font-weight:bold;text-align:center;border-style:solid;border-width:1px;border-right:0px;border-left:0px}
-                .tg-header .tg-header-34fq{font-weight:bold;text-align:right}
-                .tg-header .tg-header-34fqnoleft{font-weight:bold;text-align:right;border-style:solid;border-width:1px;border-left:0px}
-                .tg-header .tg-header-34fqtopbot{font-weight:bold;text-align:right;border-style:solid;border-width:1px;border-right:0px;border-left:0px}
-                .tg-header .tg-header-allborder{border-style:solid;border-width:1px;}
-                .tg-header .tg-header-topborder{border-style:solid;border-width:1px;border-right:0px;border-left:0px;border-bottom:0px}
 
-            </style>
-            <table class="tg-header" style="undefined;table-layout: fixed; width: 960px">
-                <colgroup>
-                    <col style="width: 80px"/>
-                    <col style="width: 80px"/>
-                    <col style="width: 80px"/>
-                    <col style="width: 80px"/>
-                    <col style="width: 80px"/>
-                    <col style="width: 80px"/>
-                    <col style="width: 80px"/>
-                    <col style="width: 80px"/>
-                    <col style="width: 80px"/>
-                    <col style="width: 80px"/>
-                    <col style="width: 80px"/>
-                    <col style="width: 80px"/>
-                </colgroup>
-                <tr>
-                    <th class="tg-header-yw4l" colspan="3" rowspan="7">
-                        <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % company.logo"
-                        style="max-height: 100px;"/>
-                    </th>
-                    <th class="tg-header-hgcj" colspan="4">
-                        <span t-field="company.name"/>
-                    </th>
-                    <th class="tg-header-031e" colspan="3"></th>
-                    <th class="tg-header-hgcjall" colspan="2">Factura electronica</th>
-                </tr>
-                <tr>
-                    <td class="tg-header-yw4l" colspan="4" rowspan="6">
-                        RFC: <span t-field="company.partner_id.vat"/><br/> <br/>
-                        <span t-field="company.partner_id.street"/>, <br/>
-                        <span t-field="company.partner_id.city"/>,<span t-field="company.partner_id.state_id"/>,<span t-field="company.partner_id.zip"/><br/>
-                        <span t-field="company.partner_id.country_id"/><br/>
-                        Telefono: <span t-field="company.partner_id.phone"/> <br/>
-                        Correo: <span t-field="company.partner_id.email"/> <br/>
-                    </td>
-                    <td class="tg-header-s6z2all">Página</td>
-                    <td class="tg-header-s6z2all" colspan="2">Fecha y hora</td>
-                    <td class="tg-header-s6z2all">Serie</td>
-                    <td class="tg-header-s6z2all">Folio</td>
-                </tr>
-                <tr>
-                    <td class="tg-header-s6z2all"><span class="page"/> / <span class="topage"/></td>
-                    <td class="tg-header-s6z2all" colspan="2">
-                        <span t-field="o.date_invoice"/>
-                    </td>
-                    <td class="tg-header-s6z2all">falta</td>
-                    <td class="tg-header-s6z2all">falta</td>
-                </tr>
-                <tr>
-                    <td class="tg-header-e3zvall" colspan="5">Folio fiscal:</td>
-                </tr>
-                <tr>
-                    <td class="tg-header-allborder" colspan="5">
-                        <span t-field="o.cfdi_folio_fiscal"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="tg-header-e3zvall" colspan="5">CSD Emisor:</td>
-                </tr>
-                <tr>
-                    <td class="tg-header-allborder" colspan="5"> <span t-field="o.cfdi_no_certificado"/></td>
-                </tr>
-                <tr>
-                    <td class="tg-header-031e" colspan="3"></td>
-                    <td class="tg-header-031e" colspan="3"></td>
-                    <td class="tg-header-031e"></td>
-                    <td class="tg-header-e3zvall" colspan="5">SCD SAT:</td>
-                </tr>
-                <tr>
-                    <td class="tg-header-031e" colspan="3"></td>
-                    <td class="tg-header-031e" colspan="3">
-                    </td>
-
-                    <td class="tg-header-031e"></td>
-                    <td class="tg-header-allborder" colspan="5"><span t-field="o.cfdi_no_certificado"/></td>
-                </tr>
-            </table>
         </div>
     </template>
 
@@ -151,7 +50,112 @@
                         <t t-if="not o or not 'company_id' in o">
                             <t t-set="company" t-value="res_company"></t>
                         </t>
+                        <style type="text/css">
+                            .tg-header  {border-collapse:collapse;border-spacing:0;}
+                            .tg-header td{font-family:Arial, sans-serif;font-size:14px;padding:5px 5px;overflow:hidden;word-break:normal;}
+                            .tg-header th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:5px 5px;overflow:hidden;word-break:normal;}
+                            .tg-header .tg-header-0ord{text-align:right}
+                            .tg-header .tg-header-s6z2{text-align:center}
+                            .tg-header .tg-header-s6z2all{text-align:center;border-style:solid;border-width:1px;}
+                            .tg-header .tg-header-baqh{text-align:center;vertical-align:top}
+                            .tg-header .tg-header-e3zv{font-weight:bold}
+                            .tg-header .tg-header-e3zvcero{font-weight:bold;border-style:solid;border-width:0px;}
+                            .tg-header .tg-header-e3zvall{font-weight:bold;border-style:solid;border-width:1px;}
+                            .tg-header .tg-header-e3zvtopbot{font-weight:bold;border-style:solid;border-width:1px;border-style:solid;border-width:1px;border-right:0px;border-left:0px}
+                            .tg-header .tg-header-yw4l{vertical-align:top}
+                            .tg-header .tg-header-yw4lall{vertical-align:top;border-style:solid;border-width:1px;}
+                            .tg-header .tg-header-hgcj{font-weight:bold;text-align:center}
+                            .tg-header .tg-header-hgcjall{font-weight:bold;text-align:center;border-style:solid;border-width:1px;}
+                            .tg-header .tg-header-hgcjnoright{font-weight:bold;text-align:center;border-style:solid;border-width:1px;border-right:0px}
+                            .tg-header .tg-header-hgcjtopbot{font-weight:bold;text-align:center;border-style:solid;border-width:1px;border-right:0px;border-left:0px}
+                            .tg-header .tg-header-34fq{font-weight:bold;text-align:right}
+                            .tg-header .tg-header-34fqnoleft{font-weight:bold;text-align:right;border-style:solid;border-width:1px;border-left:0px}
+                            .tg-header .tg-header-34fqtopbot{font-weight:bold;text-align:right;border-style:solid;border-width:1px;border-right:0px;border-left:0px}
+                            .tg-header .tg-header-allborder{border-style:solid;border-width:1px;}
+                            .tg-header .tg-header-topborder{border-style:solid;border-width:1px;border-right:0px;border-left:0px;border-bottom:0px}
 
+                        </style>
+                        <table class="tg-header" style="undefined;table-layout: fixed; width: 960px">
+                            <colgroup>
+                                <col style="width: 80px"/>
+                                <col style="width: 80px"/>
+                                <col style="width: 80px"/>
+                                <col style="width: 80px"/>
+                                <col style="width: 80px"/>
+                                <col style="width: 80px"/>
+                                <col style="width: 80px"/>
+                                <col style="width: 80px"/>
+                                <col style="width: 80px"/>
+                                <col style="width: 80px"/>
+                                <col style="width: 80px"/>
+                                <col style="width: 80px"/>
+                            </colgroup>
+                            <tr>
+                                <th class="tg-header-yw4l" colspan="3" rowspan="7">
+                                    <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % company.logo"
+                                    style="max-height: 100px;"/>
+                                </th>
+                                <th class="tg-header-hgcj" colspan="4">
+                                    <span t-field="company.name"/>
+                                </th>
+                                <th class="tg-header-031e" colspan="3"></th>
+                                <th class="tg-header-hgcjall" colspan="2">Factura electronica</th>
+                            </tr>
+                            <tr>
+                                <td class="tg-header-yw4l" colspan="4" rowspan="6">
+                                    RFC: <span t-field="company.partner_id.vat_split"/><br/> <br/>
+                                    <span t-field="company.partner_id.street"/>, <br/>
+                                    <span t-field="company.partner_id.city"/>,<span t-field="company.partner_id.state_id"/>,<span t-field="company.partner_id.zip"/><br/>
+                                    <span t-field="company.partner_id.country_id"/><br/>
+                                    Telefono: <span t-field="company.partner_id.phone"/> <br/>
+                                    Correo: <span t-field="company.partner_id.email"/> <br/>
+                                </td>
+                                <td class="tg-header-s6z2all">Página</td>
+                                <td class="tg-header-s6z2all" colspan="2">Fecha y hora</td>
+                                <td class="tg-header-s6z2all">Serie</td>
+                                <td class="tg-header-s6z2all">Folio</td>
+                            </tr>
+                            <tr>
+                                <td class="tg-header-s6z2all"><span class="page"/> / <span class="topage"/></td>
+                                <td class="tg-header-s6z2all" colspan="2">
+                                    <span t-field="o.date_invoice"/>
+                                </td>
+                                <td class="tg-header-s6z2all">
+                                  <b t-raw="'%s &lt;br&gt;' % o.invoice_sequence_id.approval_id and o.invoice_sequence_id.approval_id.serie or ''"/>
+                                </td>
+                                <td class="tg-header-s6z2all">
+                                  <b t-field="o.number"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="tg-header-e3zvall" colspan="5">Folio fiscal:</td>
+                            </tr>
+                            <tr>
+                                <td class="tg-header-allborder" colspan="5">
+                                    <span t-field="o.cfdi_folio_fiscal"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="tg-header-e3zvall" colspan="5">CSD Emisor:</td>
+                            </tr>
+                            <tr>
+                                <td class="tg-header-allborder" colspan="5"> <span t-field="o.cfdi_no_certificado"/></td>
+                            </tr>
+                            <tr>
+                                <td class="tg-header-031e" colspan="3"></td>
+                                <td class="tg-header-031e" colspan="3"></td>
+                                <td class="tg-header-031e"></td>
+                                <td class="tg-header-e3zvall" colspan="5">SCD SAT:</td>
+                            </tr>
+                            <tr>
+                                <td class="tg-header-031e" colspan="3"></td>
+                                <td class="tg-header-031e" colspan="3">
+                                </td>
+
+                                <td class="tg-header-031e"></td>
+                                <td class="tg-header-allborder" colspan="5"><span t-field="o.cfdi_no_certificado"/></td>
+                            </tr>
+                        </table>
                         <style type="text/css">
                             .tg  {border-collapse:collapse;border-spacing:0;}
                             .tg td{font-family:Arial, sans-serif;font-size:14px;padding:5px 5px;overflow:hidden;word-break:normal;}
@@ -175,7 +179,7 @@
                             .tg .tg-allborder{border-style:solid;border-width:1px;}
                             .tg .tg-topborder{border-style:solid;border-width:1px;border-right:0px;border-left:0px;border-bottom:0px}
 
-                         </style><br/><br/><br/>
+                         </style>
                         <table class="tg" style="undefined;table-layout: fixed; width: 960px">
                             <colgroup>
                                 <col style="width: 80px"/>
@@ -297,7 +301,7 @@
                                   </t>
                                  </t>
 
-                                <td class="tg-0ord" colspan="4">Unidades: <span t-esc="sum_cat"/></td>
+                                <td class="tg-0ord" colspan="4">Unidades: <span t-esc="int(sum_cat)"/></td>
                             </tr>
                             <tr>
                                 <td class="tg-34fq" colspan="2">Subtotal</td>
