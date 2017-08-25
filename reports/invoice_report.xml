@@ -205,7 +205,11 @@
                                     <span t-field="o.company_emitter_id.partner_id.regimen_fiscal_id.name"/>
                                 </td>
                                 <td class="tg-s6z2all" colspan="4">
-                                    <span t-field="o.pay_method_id"/> <span t-raw="'%s &lt;br&gt;' % o.acc_payment and o.acc_payment.last_acc_number or 'N/A'"/>
+                                    <span t-raw="'%s &lt;br&gt;' % o.pay_method_ids and ','.join([x.code for x in o.pay_method_ids]) or o.pay_method_id.code or '99'"/>
+                                        <span t-raw="'%s &lt;br&gt;' % o.pay_method_ids and ','.join([x.name for x in o.pay_method_ids]) or 'Otros'"/>
+                                    <span t-if="o.acc_payment and o.acc_payment.last_acc_number">
+                                        <span t-raw="'%s &lt;br&gt;' % o.acc_payment and o.acc_payment.last_acc_number "/>
+                                    </span>
                                 </td>
                                 <td class="tg-s6z2all" colspan="4">
                                     <span t-field="o.cfdi_fecha_timbrado"/>
