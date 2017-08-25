@@ -14,6 +14,7 @@
         'reports/purchase_order_report.xml',
         'reports/invoice_report.xml',
         'reports/report.xml',
+        'reports/report_sale.xml',
         'views/product_template_view.xml',
 
     ],

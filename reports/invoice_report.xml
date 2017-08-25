@@ -233,7 +233,8 @@
                                 <td class="tg-yw4lall" colspan="6">
                                     <span t-field="o.partner_id.name"/> <span style="padding-left:15px;margin-left:15px;" t-field="o.partner_id.ref"/><br/>
                                     R.F.C.: <span t-field="o.partner_id.vat_split"/> <br/>
-                                    <span t-field="o.partner_id.street"/>, <br/>
+                                    <span t-field="o.partner_id.street"/> <span t-if="o.partner_id.l10n_mx_street3"> No.Ext. <span t-field="o.partner_id.l10n_mx_street3"/></span>
+                                    <span t-if="o.partner_id.l10n_mx_street4"> No.Int. <span t-field="o.partner_id.l10n_mx_street4"/></span> <br/>
                                     <span t-field="o.partner_id.city"/>, <span t-field="o.partner_id.state_id"/>, <span t-field="o.partner_id.zip"/> <br/>
                                     <span t-field="o.partner_id.country_id"/><br/>
                                     Telefono: <span t-field="o.partner_id.phone"/><br/>
@@ -242,7 +243,8 @@
                                 <td class="tg-yw4lall" colspan="6">
                                     <span t-field="o.partner_shipping_id.name"/> <br/>
                                     R.F.C.: <span t-field="o.partner_shipping_id.vat_split"/> <br/>
-                                    <span t-field="o.partner_shipping_id.street"/>, <br/>
+                                    <span t-field="o.partner_shipping_id.street"/><span t-if="o.partner_id.l10n_mx_street3"> No.Ext. <span t-field="o.partner_id.l10n_mx_street3"/></span>
+                                    <span t-if="o.partner_id.l10n_mx_street4"> No.Int. <span t-field="o.partner_id.l10n_mx_street4"/></span>  <br/>
                                     <span t-field="o.partner_shipping_id.city"/>, <span t-field="o.partner_shipping_id.state_id"/>, <span t-field="o.partner_shipping_id.zip"/> <br/>
                                     <span t-field="o.partner_shipping_id.country_id"/>
                                 </td>
