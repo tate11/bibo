@@ -106,7 +106,7 @@
                         <span t-field="o.date_invoice"/>
                     </td>
                     <td class="tg-header-s6z2all">
-                      <b t-raw="'%s &lt;br&gt;' % o.invoice_sequence_id.approval_id and o.invoice_sequence_id.approval_id.serie or ''"/>
+                     <!-- <b t-raw="'%s &lt;br&gt;' % o.invoice_sequence_id and o.invoice_sequence_id.prefix or ''"/>-->
                     </td>
                     <td class="tg-header-s6z2all">
                       <b t-field="o.number"/>
@@ -197,7 +197,7 @@
                             </colgroup>
                             <tr>
                                 <td class="tg-hgcjall" colspan="4">Regimenes fiscales</td>
-                                <td class="tg-hgcjall" colspan="4">Metodo de pago y cuenta</td>
+                                <td class="tg-hgcjall" colspan="4">Forma de pago y cuenta</td>
                                 <td class="tg-hgcjall" colspan="4">Fecha y hora de certificacón</td>
                             </tr>
                             <tr>
@@ -229,6 +229,23 @@
                                     <span t-field="o.cfdi_no_certificado"/>
                                 </td>
                             </tr>
+                      <tr>
+                                <td class="tg-hgcjall" colspan="4">Metodo de pago</td>
+                                <td class="tg-hgcjall" colspan="4">Uso de CFDI</td>
+                                <td class="tg-hgcjall" colspan="4">Tipo de comprobante</td>
+                            </tr>
+                            <tr>
+                                <td class="tg-s6z2all" colspan="4">
+                                    <span t-field="o.metodo_pago_id"/>
+                                </td>
+                                <td class="tg-s6z2all" colspan="4">
+                                    <span t-field="o.uso_cfdi_id"/>
+                                </td>
+                                <td class="tg-s6z2all" colspan="4">
+                                    <span t-field="o.type_document_id"/>
+                                </td>
+                            </tr>
+
                             <tr>
                                 <td class="tg-e3zv" colspan="6">Cliente:<span style="padding-left:120px;margin-left:120px;"> No.Cliente:</span></td>
                                 <td class="tg-e3zv" colspan="6">Embarcar A:</td>
@@ -256,20 +273,20 @@
                             <tr>
                                 <td class="tg-hgcjnoright">Pedido</td>
                                 <td class="tg-hgcjtopbot">Cantidad</td>
-                                <!--<td class="tg-hgcjtopbot">Codigo</td>-->
+                                <td class="tg-hgcjtopbot" colspan="1">Cod. SAT</td>
                                 <td class="tg-e3zvtopbot" colspan="6">Descripción</td>
                                 <td class="tg-hgcjtopbot" colspan="1">Unidad</td>
                                 <td class="tg-34fqtopbot" colspan="1">Precio unitario</td>
-                                <td class="tg-34fqnoleft" colspan="2">Importe</td>
+                                <td class="tg-34fqnoleft" colspan="1">Importe</td>
                             </tr>
                             <tr t-foreach="o.invoice_line_ids.sorted(key=lambda b: b.product_id.default_code)" t-as="l">
                                 <td class="tg-s6z2"><span t-field="l.origin"/></td>
                                 <td class="tg-s6z2">
                                     <span t-field="l.quantity"/>
                                 </td>
-                                <!--<td class="tg-s6z2">
-                                    <span t-field="l.product_id.default_code"/>
-                                </td>-->
+                                <td class="tg-s6z2" colspan="1" >
+                                    <span t-field="l.product_id.sat_product_id.code"/>
+                                </td>
                                 <td class="tg-031e" colspan="6">
                                     <span t-field="l.name"/>
                                 </td>
@@ -279,7 +296,7 @@
                                 <td class="tg-0ord" colspan="1">
                                     <span t-field="l.price_unit" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;o.currency_id&quot;}"/>
                                 </td>
-                                <td class="tg-0ord" colspan="2">
+                                <td class="tg-0ord" colspan="1">
                                     <span t-field="l.price_subtotal" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;o.currency_id&quot;}"/>
                                 </td>
                             </tr>
@@ -356,9 +373,9 @@
                             <tr>
                                 <td class="tg-031e" colspan="12">Este documento es una representacón impresa de un CFDI</td>
                             </tr>
-                            <tr>
+                            <!--<tr>
                                 <td class="tg-s6z2" colspan="12">Pago en una sola exhibicion</td>
-                            </tr>
+                            </tr> -->
                         </table>
                     </div>
                 </t>

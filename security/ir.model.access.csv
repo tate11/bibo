@@ -1,1 +1,3 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_board,model_board,,1,1,1,1
+access_board_line,access_board_line,model_board_line,,1,1,1,1
