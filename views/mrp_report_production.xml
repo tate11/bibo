@@ -22,6 +22,11 @@
             <field name="arch" type="xml">
                 <form string="Reporte de operaciones">
                   <header>
+                      <button name="action_confirm" states="draft" string="Confirmar" class="o_sale_confirm" type="object" />
+                      <button name="action_pay" states="done" string="Pagado" class="o_sale_confirm" type="object" />
+                      <button name="action_cancel" states="done" string="Cancelar Confirmación" class="o_sale_confirm" type="object" />
+                      <button name="action_cancel" states="pay" string="Cancelar Confirmación" class="o_sale_confirm" type="object" />
+                      <field name="state" widget="statusbar" statusbar_visible="draft,done,pay"/>
                 </header>
                     <sheet>
                       <div class="oe_title">

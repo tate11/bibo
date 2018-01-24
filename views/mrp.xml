@@ -8,9 +8,9 @@
                 <xpath expr="//sheet/notebook/page/group/group//field[@name='name']" position="after">
                     <field name="board_id"/>
                 </xpath>
-                <xpath expr="//sheet/group/group//field[@name='is_produced']" position="after">
+              <!--  <xpath expr="//sheet/group/group//field[@name='is_produced']" position="after">
                     <field name="payment"/>
-                </xpath>
+                </xpath>-->
             </field>
         </record>
   </data>

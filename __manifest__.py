@@ -18,7 +18,7 @@
         'views/product_template_view.xml',
         'views/table.xml',
         'views/mrp.xml',
-        #'views/mrp_routing_workcenter.xml',
+        'views/mrp_routing_workcenter.xml',
         'views/mrp_report_production.xml',
         'reports/report_production.xml',
 

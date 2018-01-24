@@ -11,7 +11,7 @@ _logger = logging.getLogger(__name__)
 class MrpWorkorder(models.Model):
     _inherit = 'mrp.workorder'
     board_id = fields.Many2one('board', string="Mesa")
-    payment = fields.Float(string="Pago de empleado por pza.")
+    #payment = fields.Float(string="Pago de empleado por pza.")
 
     @api.multi
     def record_production(self):
@@ -25,14 +25,14 @@ class MrpWorkorder(models.Model):
             week = x.isocalendar()[1]
             print("fecha")
             print(x)
-            #dicdias = {'MONDAY': '1', 'TUESDAY': '2', 'WEDNESDAY': '3', 'THURSDAY': '4', \
-            #           'FRIDAY': '5', 'SATURDAY': '6', 'SUNDAY': '7'}
-            #dicdias2 = {'MONDAY': '7', 'TUESDAY': '6', 'WEDNESDAY': '5', 'THURSDAY': '4', \
-            #            'FRIDAY': '3', 'SATURDAY': '2', 'SUNDAY': '1'}
-            dicdias = {'LUNES': '1', 'MARTES': '2', 'MIERCOLES': '3', 'JUEVES': '4', \
-                       'VIERNES': '5', 'SABADO': '6', 'DOMINGO': '7'}
-            dicdias2 = {'LUNES': '7', 'MARTES': '6', 'MIERCOLES': '5', 'JUEVES': '4', \
-                       'VIERNES': '3', 'SABADO': '2', 'DOMINGO': '1'}
+            dicdias = {'MONDAY': '1', 'TUESDAY': '2', 'WEDNESDAY': '3', 'THURSDAY': '4', \
+                       'FRIDAY': '5', 'SATURDAY': '6', 'SUNDAY': '7'}
+            dicdias2 = {'MONDAY': '7', 'TUESDAY': '6', 'WEDNESDAY': '5', 'THURSDAY': '4', \
+                        'FRIDAY': '3', 'SATURDAY': '2', 'SUNDAY': '1'}
+            #dicdias = {'LUNES': '1', 'MARTES': '2', 'MIERCOLES': '3', 'JUEVES': '4', \
+            #           'VIERNES': '5', 'SABADO': '6', 'DOMINGO': '7'}
+            #dicdias2 = {'LUNES': '7', 'MARTES': '6', 'MIERCOLES': '5', 'JUEVES': '4', \
+            #           'VIERNES': '3', 'SABADO': '2', 'DOMINGO': '1'}
             anho = x.year
             mes = x.month
             dia = x.day
@@ -61,25 +61,27 @@ class MrpWorkorder(models.Model):
                     'date_finish':domingo
 
                 }
-                total=self.qty_produced * self.payment
+                payment = self.operation_id.payment
+                total=self.qty_produced * payment
                 report_id = report_ref.create(vals)
                 lines = {
                     'production_id' :report_id.id,
                     'mrp_production_id': self.production_id.id,
                     'operation_id': self.id,
                     'qty': self.qty_produced,
-                    'precio_unit':self.payment,
+                    'precio_unit':payment,
                     'total':total,
                 }
                 reportl_ref.create(lines)
             else:
-                total = self.qty_produced * self.payment
+                payment = self.operation_id.payment
+                total = self.qty_produced * payment
                 lines = {
                     'production_id': report_operations.id,
                     'mrp_production_id': self.production_id.id,
                     'operation_id': self.id,
                     'qty': self.qty_produced,
-                    'precio_unit': self.payment,
+                    'precio_unit': payment,
                     'total': total,
                 }
                 reportl_ref.create(lines)
