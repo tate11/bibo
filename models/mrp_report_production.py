@@ -26,26 +26,37 @@ class MrpReportProduction(models.Model):
     def action_confirm(self):
         for order in self:
             order.state = 'done'
+        for p in self.production_lines:
+            p.state = 'done'
 
     @api.multi
     def action_pay(self):
         for order in self:
             order.state = 'pay'
+        for p in self.production_lines:
+            p.state = 'pay'
 
     @api.multi
     def action_cancel(self):
         for order in self:
             order.state = 'draft'
+        for p in self.production_lines:
+            p.state = 'draft'
 
 
 
 
 class MrpReportProductionLine(models.Model):
     _name = 'mrp.report.production.line'
+    state = fields.Selection([
+        ('draft', 'Borrador'),
+        ('done', 'Confirmado'),
+        ('pay', 'Pagado'),
+    ], string='Estatus', readonly=True, copy=False, index=True, track_visibility='onchange', default='draft')
     production_id = fields.Many2one('mrp.report.production', string='reporte de Produccion Reference', required=True, ondelete='cascade',
                                    index=True, copy=False)
-    mrp_production_id = fields.Many2one('mrp.production', string="Orden de Produccion", readonly=False, states={'pay': [('readonly', True)]})
-    operation_id = fields.Many2one('mrp.workorder', string="Operacion", readonly=False, states={'pay': [('readonly', True)]})
-    qty= fields.Integer('Piezas', readonly=False, states={'pay': [('readonly', True)]})
-    precio_unit = fields.Float('Precio', readonly=True, states={'pay': [('readonly', True)]})
-    total = fields.Float('Total', readonly=False, states={'pay': [('readonly', True)]})
+    mrp_production_id = fields.Many2one('mrp.production', string="Orden de Produccion", readonly=False)
+    operation_id = fields.Many2one('mrp.workorder', string="Operacion", readonly=False)
+    qty= fields.Integer('Piezas', readonly=False)
+    precio_unit = fields.Float('Precio', readonly=False,states={'pay': [('readonly', True)]})
+    total = fields.Float('Total', readonly=False)
