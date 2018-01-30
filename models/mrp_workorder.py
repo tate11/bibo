@@ -25,14 +25,18 @@ class MrpWorkorder(models.Model):
             week = x.isocalendar()[1]
             print("fecha")
             print(x)
-            dicdias = {'MONDAY': '1', 'TUESDAY': '2', 'WEDNESDAY': '3', 'THURSDAY': '4', \
-                       'FRIDAY': '5', 'SATURDAY': '6', 'SUNDAY': '7'}
-            dicdias2 = {'MONDAY': '7', 'TUESDAY': '6', 'WEDNESDAY': '5', 'THURSDAY': '4', \
-                        'FRIDAY': '3', 'SATURDAY': '2', 'SUNDAY': '1'}
-            #dicdias = {'LUNES': '1', 'MARTES': '2', 'MIERCOLES': '3', 'JUEVES': '4', \
-            #           'VIERNES': '5', 'SABADO': '6', 'DOMINGO': '7'}
-            #dicdias2 = {'LUNES': '7', 'MARTES': '6', 'MIERCOLES': '5', 'JUEVES': '4', \
-            #           'VIERNES': '3', 'SABADO': '2', 'DOMINGO': '1'}
+            #dicdias = {'MONDAY': '1', 'TUESDAY': '2', 'WEDNESDAY': '3', 'THURSDAY': '4', \
+            #           'FRIDAY': '5', 'SATURDAY': '6', 'SUNDAY': '7'}
+            #dicdias2 = {'MONDAY': '7', 'TUESDAY': '6', 'WEDNESDAY': '5', 'THURSDAY': '4', \
+            #            'FRIDAY': '3', 'SATURDAY': '2', 'SUNDAY': '1'}
+            dicdias = {'MONDAY': '5', 'TUESDAY': '6', 'WEDNESDAY': '7', 'THURSDAY': '1', \
+                       'FRIDAY': '2', 'SATURDAY': '3', 'SUNDAY': '4'}
+            dicdias2 = {'MONDAY': '3', 'TUESDAY': '2', 'WEDNESDAY': '1', 'THURSDAY': '7', \
+                        'FRIDAY': '6', 'SATURDAY': '5', 'SUNDAY': '4'}
+            #dicdias = {'JUEVES': '1', 'VIERNES': '2', 'SABADO': '3','DOMINGO': '4', \
+            #           'LUNES': '5', 'MARTES': '6', 'MIERCOLES': '7'}
+            #dicdias2 =  {'JUEVES': '7', 'VIERNES': '6', 'SABADO': '5','DOMINGO': '4', \
+            #           'LUNES': '3', 'MARTES': '2', 'MIERCOLES': '1'}
             anho = x.year
             mes = x.month
             dia = x.day
@@ -42,23 +46,23 @@ class MrpWorkorder(models.Model):
             _logger.info(_('valos %s') % (fecha.strftime('%A')))
             noweek = dicdias[fecha.strftime('%A').upper()]
             resta = 7 - int(noweek)
-            domingo = x + timedelta(days=resta)
+            jueves = x + timedelta(days=resta)
 
             fecha2 = datetime.date(anho, mes, dia)
             #fecha2 = datetime.strptime(fech, '%Y-%m-%d %H:%M:%S')
             noweek2 = dicdias2[fecha2.strftime('%A').upper()]
             resta2 = 7 - int(noweek2)
-            lunes = x - timedelta(days=resta2)
+            miercoles = x - timedelta(days=resta2)
 
             employee = l.employee_id
             report_operations = self.env['mrp.report.production'].search([('name','=',employee.id),
-                                                                          ('date_start','=',lunes),
-                                                                          ('date_finish','=',domingo)], limit=1)
+                                                                          ('date_start','=',jueves),
+                                                                          ('date_finish','=',miercoles)], limit=1)
             if len(report_operations) == 0:
                 vals = {
                     'name':employee.id,
-                    'date_start':lunes,
-                    'date_finish':domingo
+                    'date_start':jueves,
+                    'date_finish':miercoles
 
                 }
                 payment = self.operation_id.payment

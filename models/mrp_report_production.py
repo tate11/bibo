@@ -12,10 +12,11 @@ class MrpReportProduction(models.Model):
             mrp.subtotal = total
 
     name = fields.Many2one('hr.employee', string="Empleado", readonly=True)
-    production_lines = fields.One2many('mrp.report.production.line', 'production_id', string='Table lines',readonly=False,states={'pay': [('readonly', True)]})
+    production_lines = fields.One2many('mrp.report.production.line', 'production_id', string='Table lines'
+                                       )
     date_start = fields.Date('Fecha Inicio',readonly=True)
     date_finish = fields.Date('Fecha Fin', readonly=True)
-    subtotal = fields.Float('Subtotal', compute="_compute_suma")
+    subtotal = fields.Float('Subtotal', compute="_compute_suma", store=True)
     state = fields.Selection([
         ('draft', 'Borrador'),
         ('done', 'Confirmado'),
